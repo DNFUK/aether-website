@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-night text-white font-body antialiased;
+    /* Faint nebula wash layered under the canvas star field. */
+    background-image:
+      radial-gradient(60rem 40rem at 15% -10%, rgba(91, 141, 238, 0.16), transparent 60%),
+      radial-gradient(50rem 40rem at 90% 0%, rgba(240, 192, 96, 0.12), transparent 55%),
+      radial-gradient(40rem 40rem at 50% 120%, rgba(91, 141, 238, 0.1), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(240, 192, 96, 0.28);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-6 sm:px-8;
+  }
+
+  /* Gradient text helper used for headline accents. */
+  .text-gradient-gold {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  .text-gradient-aurora {
+    @apply bg-aurora bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+
+  /* Glassy surface used for nav + cards. */
+  .glass {
+    background: linear-gradient(180deg, rgba(18, 20, 43, 0.72), rgba(10, 11, 26, 0.72));
+    @apply border border-white/[0.07] backdrop-blur-xl;
+  }
+
+  /* Thin hairline divider matching the cosmic palette. */
+  .hairline {
+    @apply border-white/[0.07];
+  }
+}
+
+@layer utilities {
+  /* Reveal-on-scroll: starts hidden, .is-visible (added via IntersectionObserver) animates in. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Subtle grid texture for section backgrounds. */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .animate-float,
+    .animate-float-slow,
+    .animate-pulse-glow,
+    .animate-shimmer,
+    .animate-spin-slow {
+      animation: none !important;
+    }
+  }
+}
