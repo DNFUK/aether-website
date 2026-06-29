@@ -54,6 +54,10 @@ const config: Config = {
           "0%, 100%": { opacity: "0.55" },
           "50%": { opacity: "1" },
         },
+        twinkle: {
+          "0%, 100%": { opacity: "0.25", transform: "scale(0.8)" },
+          "50%": { opacity: "1", transform: "scale(1.15)" },
+        },
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(24px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -71,6 +75,7 @@ const config: Config = {
         float: "float 7s ease-in-out infinite",
         "float-slow": "float-slow 9s ease-in-out infinite",
         "pulse-glow": "pulse-glow 5s ease-in-out infinite",
+        twinkle: "twinkle 3.5s ease-in-out infinite",
         "fade-up": "fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         shimmer: "shimmer 6s linear infinite",
         "spin-slow": "spin_slow 40s linear infinite",
