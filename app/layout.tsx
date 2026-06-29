@@ -44,9 +44,8 @@ export const metadata: Metadata = {
     title: `${bot.name} — ${bot.tagline}`,
     description: bot.description,
   },
-  icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-  },
+  // Icons are auto-detected from app/favicon.ico and app/icon.svg
+  // (Next.js App Router file convention), so no manual links are needed here.
 };
 
 export const viewport: Viewport = {
